@@ -1,5 +1,3 @@
-"use strict"
-
 const cityName = "Аткарск";
 const weatherData = {
     key: "d9341ad1b5c8e3239b51c0d0abe05c01",
@@ -48,17 +46,24 @@ $(document).ready(function() {
 
 
 var h_mrg = 0; // отступ когда шапка уже не видна  
+var h_hght = document.getElementById("page-header__top").offsetHeight;
+var advertisingTop = document.querySelector(".page-header-advertising img");
 
 $(function() {
-    let h_hght = document.getElementsByClassName("page-header__container-top")[0].offsetHeight;
     var elem = $('.page-header__bottom');
     var top = $(this).scrollTop();
-    if (top > h_hght) {
+
+    if (top == 0) {
+        advertisingTop.style.height = h_hght + "px";
+        elem.css('top', h_hght);
+    } else if (top > h_hght) {
         elem.css('top', h_mrg);
     }
 
-    $(window).scroll(function() {
+    $(window).on("load resize scroll", function() {
+        h_hght = document.getElementById("page-header__top").offsetHeight;
         top = $(this).scrollTop();
+        advertisingTop.style.height = h_hght + "px";
         if (top + h_mrg < h_hght) {
             elem.css('top', (h_hght - top));
         } else {

@@ -63,7 +63,8 @@ textarea {
   padding: 0;
 }
 
-.page-header-logo {
+.page-header-logo,
+.page-header-logo_mobile {
   background: url("../img/logoheader.png") no-repeat;
   background-size: contain;
   width: 160px;
@@ -958,7 +959,7 @@ textarea {
 }
 
 @media screen and (max-width: 600px) {
-  .page-header__container-top .page-header-logo:first-child,
+  .page-header-logo,
   .page-header__info_block,
   .page-header__weather,
   .page-header__navigation,
@@ -973,6 +974,7 @@ textarea {
 }
 
 @media screen and (min-width: 601px) {
+  .page-header-logo_mobile,
   .burger {
     visibility: hidden;
     display: none;

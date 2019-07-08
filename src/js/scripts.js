@@ -40,21 +40,23 @@ $.post(request_weather, function(data) {
 $(document).ready(function() {
     $('.burger').on('click', function() {
         $(".burger").toggleClass('active');
-        $(".page-header__menu").toggleClass('page-header__menu-open');
+        $(".header__menu").toggleClass('header__menu-open');
+    });
+
+    $('.header__icons-search').on('click', function() {
+        $(".header-search-drop_down").toggleClass('active');
     });
 });
 
 
 var h_mrg = 0; // отступ когда шапка уже не видна  
 var h_hght = document.getElementById("page-header__top").offsetHeight;
-var advertisingTop = document.querySelector(".page-header-advertising img");
 
 $(function() {
-    var elem = $('.page-header__bottom');
+    var elem = $('.header__bottom');
     var top = $(this).scrollTop();
 
     if (top == 0) {
-        advertisingTop.style.height = h_hght + "px";
         elem.css('top', h_hght);
     } else if (top > h_hght) {
         elem.css('top', h_mrg);
@@ -63,7 +65,6 @@ $(function() {
     $(window).on("load resize scroll", function() {
         h_hght = document.getElementById("page-header__top").offsetHeight;
         top = $(this).scrollTop();
-        advertisingTop.style.height = h_hght + "px";
         if (top + h_mrg < h_hght) {
             elem.css('top', (h_hght - top));
         } else {
